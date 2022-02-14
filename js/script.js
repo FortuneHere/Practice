@@ -14,6 +14,8 @@
 
 'use strict';
 
+
+
 const movieDB = {
     movies: [
         "Логан",
@@ -24,6 +26,34 @@ const movieDB = {
     ]
 };
 
+const ads = document.querySelectorAll('.promo__adv img'),
+      adsHeader = document.querySelector('.promo__adv-title'),
+      poster = document.querySelector('.promo__bg'),
+      genre = poster.querySelector('.promo__genre'),
+      movieList = document.querySelector('.promo__interactive-list');
+
+
+    
+      
+ads.forEach(item => {item.remove();});
+
+adsHeader.remove();
+
+genre.textContent = 'Драма';
+
+poster.style.backgroundImage = 'url("img/bg.jpg")';
+
+movieList.innerHTML = '';
+
+movieDB.movies.sort();
+
+movieDB.movies.forEach((film, i) => {
+  movieList.innerHTML += `
+      <li class="promo__interactive-item">${i + 1}. ${film}
+        <div class="delete"></div>
+      </li>
+  `;
+});
 
 
 const personalMovieDB = {
@@ -103,5 +133,6 @@ const personalMovieDB = {
       });
     }
 };
+
 
 
